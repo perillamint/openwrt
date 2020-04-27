@@ -10,6 +10,7 @@ mediatek_setup_interfaces()
 
 	case $board in
 	bananapi,bpi-r2|\
+	iptime,a8004ns-m-emmc|\
 	unielec,u7623-02-emmc-512m)
 		ucidef_set_interfaces_lan_wan "lan0 lan1 lan2 lan3" "wan"
 		;;
@@ -21,6 +22,10 @@ mediatek_setup_macs()
 	local board="$1"
 
 	case $board in
+	iptime,a8004ns-m-emmc)
+		ucidef_set_interface_macaddr "lan" $(get_mac_binary /dev/mmcblk0 0xbfc20)
+		ucidef_set_interface_macaddr "wan" $(get_mac_binary /dev/mmcblk0 0xbfc40)
+		;;
 	unielec,u7623-02-emmc-512m)
 		ucidef_set_interface_macaddr "wan" "$(cat /sys/class/net/wan/address)"
 		;;

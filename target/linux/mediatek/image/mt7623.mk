@@ -16,3 +16,14 @@ define Device/bpi_bananapi-r2
   SUPPORTED_DEVICES := bananapi,bpi-r2
 endef
 TARGET_DEVICES += bpi_bananapi-r2
+
+define Device/iptime_a8004ns-m-emmc
+  DEVICE_VENDOR := ipTIME
+  DEVICE_MODEL := A8004NS-M
+  DEVICE_VARIANT := eMMC
+  DEVICE_DTS := mt7623a-iptime-a8004ns-m-emmc
+  DEVICE_PACKAGES := mkf2fs e2fsprogs kmod-fs-vfat kmod-nls-cp437 kmod-nls-iso8859-1 kmod-mmc \
+	  kmod-mt7615e kmod-usb3 wpad-basic
+  UIMAGE_NAME := a8004nm
+endef
+TARGET_DEVICES += iptime_a8004ns-m-emmc

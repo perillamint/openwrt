@@ -1,0 +1,30 @@
+/*
+ * Copyright 2020 Yong-hyu Ban <perillamint@quendi.moe>
+ *
+ * Based on Unielec U7623-02 dts
+ * Copyright 2018 Kristian Evensen <kristian.evensen@gmail.com>
+ *
+ * SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+ */
+
+/dts-v1/;
+#include "mt7623a-iptime-a8004ns-m.dtsi"
+
+/ {
+	model = "ipTIME A8004NS-M (eMMC)";
+	compatible = "iptime,a8004ns-m-emmc", "iptime,a8004ns-m", "mediatek,mt7623";
+};
+
+&mmc0 {
+	pinctrl-names = "default", "state_uhs";
+	pinctrl-0 = <&mmc0_pins_default>;
+	pinctrl-1 = <&mmc0_pins_uhs>;
+	status = "okay";
+	bus-width = <8>;
+	max-frequency = <50000000>;
+	cap-mmc-highspeed;
+	vmmc-supply = <&reg_3p3v>;
+	vqmmc-supply = <&reg_1p8v>;
+	non-removable;
+};
+
